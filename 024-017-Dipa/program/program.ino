@@ -1,9 +1,4 @@
-OneWire oneWire(ONE_WIRE_BUS);
-DallasTemperature DS18B20(&oneWire);
-
-LiquidCrystal_I2C lcd(0x27, 20, 4);
-
-PIDv3 pid;
+#include "Header.h"
 
 void setup() {
   Serial.begin(9600);
