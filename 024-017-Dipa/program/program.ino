@@ -14,7 +14,7 @@ void setup() {
 
 void loop() {
   if (Serial.available() > 0) {
-    temperature = Serial.readStringUntil('\n').toFloat();
+    temperatureTest = Serial.readStringUntil('\n').toFloat();
   }
 
   int state = !digitalRead(BUTTON_PIN);
@@ -47,6 +47,7 @@ void loop() {
       DS18B20.requestTemperatures();
 
       // temperature = DS18B20.getTempCByIndex(0);
+      temperature = temperatureTest + (temperatureTest * 0.018 * ((float)random(-100, 100) / 100.0));
 
       outputPID = map(outputPID, 0, 100, 0, 255);
       analogWrite(SSR_PIN, outputPID);

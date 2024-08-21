@@ -25,5 +25,6 @@ unsigned long interval = 3000;
 bool systemState = false;
 
 float temperature = 0.0;
+float temperatureTest = 0.0;
 float sp = 40.0;
 float outputPID;
