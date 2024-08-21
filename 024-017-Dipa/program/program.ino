@@ -13,9 +13,9 @@ void setup() {
 }
 
 void loop() {
-  if (Serial.available() > 0) {
-    temperatureTest = Serial.readStringUntil('\n').toFloat();
-  }
+  // if (Serial.available() > 0) {
+  //   temperatureTest = Serial.readStringUntil('\n').toFloat();
+  // }
 
   int state = !digitalRead(BUTTON_PIN);
   if (state) {
@@ -33,7 +33,7 @@ void loop() {
     Serial.print(outputPID);
     Serial.println();
 
-    pid.setTunings(2.0, 0.001, 0.005);
+    pid.setTunings(10.0, 0.02, 0.79); // 2.0, 0.001, 0.005 // 
     pid.setOutputLimits(0, 100);
     pid.setMode(AUTOMATIC);
     pid.setControllerDirection(DIRECT);
@@ -46,12 +46,12 @@ void loop() {
       prevMillis = currentMillis;
       DS18B20.requestTemperatures();
 
-      // temperature = DS18B20.getTempCByIndex(0);
-      temperature = temperatureTest + (temperatureTest * 0.018 * ((float)random(-100, 100) / 100.0));
+      temperature = DS18B20.getTempCByIndex(0);
+      // temperature = temperatureTest + (temperatureTest * 0.018 * ((float)random(-100, 100) / 100.0));
 
       outputPID = map(outputPID, 0, 100, 0, 255);
       analogWrite(SSR_PIN, outputPID);
-      // analogWrite(SSR_PIN, 255);
+      analogWrite(SSR_PIN, 255);
 
       lcd.setCursor(0, 0);
       lcd.print("PV =             ");

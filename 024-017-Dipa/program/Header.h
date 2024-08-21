@@ -26,5 +26,5 @@ bool systemState = false;
 
 float temperature = 0.0;
 float temperatureTest = 0.0;
-float sp = 40.0;
+float sp = 50.0;
 float outputPID;
