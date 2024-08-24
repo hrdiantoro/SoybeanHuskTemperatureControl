@@ -33,7 +33,7 @@ void loop() {
     Serial.print(outputPID);
     Serial.println();
 
-    pid.setTunings(9.96, 0.02, 0.38); // 2.0, 0.001, 0.005 // 10.0, 0.02, 0.79
+    pid.setTunings(10.0, 0.02, 0.79); // 2.0, 0.001, 0.005 // 10.0, 0.02, 0.79 // 9.96, 0.02, 0.38
     pid.setOutputLimits(0, 100);
     pid.setMode(AUTOMATIC);
     pid.setControllerDirection(DIRECT);
