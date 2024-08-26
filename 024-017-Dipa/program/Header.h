@@ -17,6 +17,17 @@ DallasTemperature DS18B20(&oneWire);
 
 LiquidCrystal_I2C lcd(0x27, 20, 4);
 
+byte degreeSymbol[8] = {
+  B00110,
+  B01001,
+  B01001,
+  B00110,
+  B00000,
+  B00000,
+  B00000,
+  B00000
+};
+
 PIDv3 pid;
 
 unsigned long prevMillis = 0;

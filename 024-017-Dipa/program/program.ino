@@ -5,6 +5,7 @@ void setup() {
   DS18B20.begin();
   lcd.init();
   lcd.backlight();
+  lcd.createChar(0, degreeSymbol);
 
   pinMode(BUTTON_PIN, INPUT_PULLUP);
   pinMode(RELAY_PIN_1, OUTPUT);
@@ -57,13 +58,15 @@ void loop() {
       lcd.print("PV =             ");
       lcd.setCursor(5, 0);
       lcd.print(temperature);
-      lcd.print("*C");
+      lcd.write(byte(0));
+      lcd.print("C");
 
       lcd.setCursor(0, 1);
       lcd.print("SP =             ");
       lcd.setCursor(5, 1);
       lcd.print(sp);
-      lcd.print("*C");
+      lcd.write(byte(0));
+      lcd.print("C");
 
       lcd.setCursor(0, 2);
       lcd.print("PID =             ");
