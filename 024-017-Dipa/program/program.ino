@@ -51,8 +51,8 @@ void loop() {
       // temperature = temperatureTest + (temperatureTest * 0.018 * ((float)random(-100, 100) / 100.0));
 
       outputPID = map(outputPID, 0, 100, 0, 255);
-      analogWrite(SSR_PIN, outputPID);
-      // analogWrite(SSR_PIN, 255);
+      // analogWrite(SSR_PIN, outputPID);
+      analogWrite(SSR_PIN, 255);
 
       lcd.setCursor(0, 0);
       lcd.print("PV =             ");
